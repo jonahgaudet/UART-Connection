@@ -91,11 +91,11 @@ if __name__ == '__main__':
                     "You can view the various ports in use by following the part Start->Device Manager->Ports\n"
                     "Input the port name here, will default to %s: " % COM_PORT).upper()
 
-    if isinstance(comPort, str) != "":
+    if isinstance(comPort, str) and comPort != "":
         print("Using user-provided port (%s), window will open if successful: " % comPort)
         ser = serial.Serial(port=comPort)
     else:
-        print("Invalid input, using default port (COM4), window will open if successful: ")
+        print("Invalid input, using default port %s, window will open if successful: " % COM_PORT)
         ser = serial.Serial(port=COM_PORT)
     ser.isOpen()
     start()
